@@ -8,21 +8,12 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-/* ─── HERO IMAGE PARALLAX / LOAD ─────────────────────────── */
+/* ─── HERO IMAGE LOAD ────────────────────────────────────── */
 const heroImg = document.querySelector('.hero-img');
 if (heroImg) {
   heroImg.addEventListener('load', () => heroImg.classList.add('loaded'));
   if (heroImg.complete) heroImg.classList.add('loaded');
 }
-
-window.addEventListener('scroll', () => {
-  if (!heroImg) return;
-  const scrollY = window.scrollY;
-  const heroH = document.querySelector('.hero').offsetHeight;
-  if (scrollY < heroH) {
-    heroImg.style.transform = `scale(1) translateY(${scrollY * 0.25}px)`;
-  }
-}, { passive: true });
 
 /* ─── SCROLL REVEAL ──────────────────────────────────────── */
 const reveals = document.querySelectorAll(
