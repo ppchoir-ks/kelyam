@@ -20,9 +20,18 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
     </ul>
-    <button class="nav-toggle" aria-label="Menu">
+    <button class="nav-toggle" aria-label="Open menu" id="navToggle">
       <span></span><span></span>
     </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+    <button class="nav-drawer-close" id="navClose" aria-label="Close menu">✕</button>
+    <a href="#about"    onclick="closeDrawer()">About</a>
+    <a href="#services" onclick="closeDrawer()">Services</a>
+    <a href="#work"     onclick="closeDrawer()">Work</a>
+    <a href="#contact"  onclick="closeDrawer()">Let's Talk →</a>
   </nav>
 
   <!-- HERO -->
