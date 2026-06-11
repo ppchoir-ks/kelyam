@@ -37,38 +37,27 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(el => observer.observe(el));
 
-/* ─── MOBILE NAV ─────────────────────────────────────────── */
-const toggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
+/* ─── MOBILE NAV DRAWER ──────────────────────────────────── */
+const navToggle = document.getElementById('navToggle');
+const navDrawer = document.getElementById('navDrawer');
+const navClose  = document.getElementById('navClose');
 
-if (toggle && navLinks) {
-  toggle.addEventListener('click', () => {
-    const isOpen = navLinks.style.display === 'flex';
-    navLinks.style.display = isOpen ? 'none' : 'flex';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '100%';
-    navLinks.style.left = '0';
-    navLinks.style.right = '0';
-    navLinks.style.background = 'rgba(248,248,246,0.96)';
-    navLinks.style.backdropFilter = 'blur(18px)';
-    navLinks.style.padding = '1.5rem 2.5rem';
-    navLinks.style.borderBottom = '1px solid rgba(200,191,176,0.3)';
-    if (!isOpen) {
-      navLinks.querySelectorAll('a').forEach(a => {
-        a.style.color = '#0D0D0D';
-        a.style.padding = '0.6rem 0';
-        a.style.borderBottom = '1px solid rgba(200,191,176,0.2)';
-      });
-    }
-  });
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.style.display = 'none';
-    });
-  });
+function openDrawer() {
+  navDrawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+function closeDrawer() {
+  navDrawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+if (navToggle) navToggle.addEventListener('click', openDrawer);
+if (navClose)  navClose.addEventListener('click', closeDrawer);
+
+// Close on backdrop click (outside drawer content)
+navDrawer && navDrawer.addEventListener('click', (e) => {
+  if (e.target === navDrawer) closeDrawer();
+});
 
 /* ─── CONTACT FORM ───────────────────────────────────────── */
 const form = document.getElementById('contactForm');
